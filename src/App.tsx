@@ -446,13 +446,28 @@ export default function App() {
           <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12 z-10">
             {/* Desktop Connectors */}
             <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
-              <svg className="w-full h-full text-blue-500/10" viewBox="0 0 1200 600" fill="none">
-                {/* Row 1: 1->2->3 */}
-                <path d="M280 160 H520 M680 160 H920" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
-                {/* Connection down: 3->4 */}
-                <path d="M1000 240 V320 Q1000 400 800 400 H680" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
-                {/* Row 2: 4->5->6 */}
-                <path d="M520 400 H280 M920 400 H680" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
+              <svg className="w-full h-full text-blue-500/40" viewBox="0 0 1200 600" preserveAspectRatio="none" fill="none">
+                {/* Row 1: 1 -> 2 -> 3 */}
+                <path d="M 240 80 H 560 M 640 80 H 960" 
+                  className="workflow-path"
+                  stroke="currentColor" 
+                  strokeWidth="3" 
+                  strokeDasharray="12 12" 
+                />
+                {/* Transition: 3 down to 4 */}
+                <path d="M 1000 120 C 1000 240, 200 240, 200 360" 
+                  className="workflow-path"
+                  stroke="currentColor" 
+                  strokeWidth="3" 
+                  strokeDasharray="12 12" 
+                />
+                {/* Row 2: 4 -> 5 -> 6 */}
+                <path d="M 240 400 H 560 M 640 400 H 960" 
+                  className="workflow-path"
+                  stroke="currentColor" 
+                  strokeWidth="3" 
+                  strokeDasharray="12 12" 
+                />
               </svg>
             </div>
 

@@ -145,5 +145,15 @@
 }
 
 .label-small {
-  @apply text-[12px] font-bold uppercase tracking-[0.2em] text-white/40 mb-4 inline-block;
+  @apply text-[12px] font-bold uppercase tracking-[0.2em] text-blue-400 mb-4 inline-block;
+}
+
+@keyframes dash-flow {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+.workflow-path {
+  animation: dash-flow 20s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
 }
