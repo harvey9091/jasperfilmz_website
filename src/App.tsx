@@ -157,10 +157,50 @@ export default function App() {
   ];
 
   const faqs = [
-    { q: "How much time do I really need to spend?", a: "Exactly 2 hours per month. We batch your recording sessions so you can focus on your business while we handle the rest." },
-    { q: "Do you work with new channels?", a: "Yes. We specialize in building high-authority channels from scratch for coaches and consultants." },
-    { q: "What kind of results can I expect?", a: "Our goal is qualified sales calls. Most clients see a significant increase in inbound leads within the first 30-60 days." },
-    { q: "Do you handle thumbnails and SEO?", a: "Full service. We handle everything from the initial idea to the final upload and optimization." },
+    { 
+      q: "What exactly do you help with?", 
+      a: "We handle the entire YouTube growth strategy for you — from research and scripting to cinematic editing, SEO, attention-grabbing thumbnails, and publishing. You simply show up to record once per week. Everything else is completely done-for-you with a singular focus: turning viewers into qualified inbound leads." 
+    },
+    { 
+      q: "Why YouTube over other channels?", 
+      a: "YouTube is where high-ticket buyers go when they're actively searching for solutions. It's high-intent, evergreen, and compounds over time. Unlike short-form content or ads that stop working the second you stop paying, one great video can drive qualified leads for years." 
+    },
+    { 
+      q: "I'm already seeing results elsewhere. Why do I need this?", 
+      a: "YouTube isn't just a linear channel; it's a trust-building asset. It works 24/7 to pre-sell prospects before they ever hop on a call with you, warming up leads from your ads, referrals, and outreach. It becomes the authoritative backbone of your brand that amplifies every other marketing effort you're currently running." 
+    },
+    { 
+      q: "How much time will this really take me?", 
+      a: "Most of our clients spend just 60–90 minutes per week filming, or they choose to batch record for a few hours once per month. Our team handles the heavy lifting—ideation, scripting, editing, and management—so you can stay focused on your zone of genius: running your business." 
+    },
+    { 
+      q: "How do I know this will actually work for me?", 
+      a: "Our system is specifically built for operators, founders, and agency owners—not 'influencers'. If you have a solid offer and are willing to share your expertise on camera once a week, we handle the strategy to ensure it translates into business growth. We start with a strategy call to ensure a perfect fit before we build anything." 
+    },
+    { 
+      q: "Do I need to come up with the content ideas myself?", 
+      a: "Not at all. Our team handles all the ideation, researches high-traffic angles, and writes the full scripts for you. You only need to show up and record using a proven, data-backed strategy that is designed to convert." 
+    },
+    { 
+      q: "What kind of results can I expect?", 
+      a: "While results vary, most clients start seeing their first inbound sales calls within the first 30-45 days of consistent posting. Because YouTube is a compounding platform, your results only get stronger as your library of pre-selling content grows." 
+    },
+    { 
+      q: "How is this different from hiring a freelancer?", 
+      a: "freelancers 'edit videos'; we build 'conversion funnels'. The difference is strategy. We don't just make things look pretty; we handle the positioning, psychology-backed scripting, and SEO that actually drives business outcomes, not just views." 
+    },
+    { 
+      q: "Do I need a big audience for this to work?", 
+      a: "No. Many of our best success stories started with fewer than 300 subscribers. Because YouTube is search-based and algorithmic, your content is placed directly in front of buyers actively searching for your solutions, regardless of your follower count." 
+    },
+    { 
+      q: "How quickly can we get started?", 
+      a: "After onboarding, we typically deliver your first batch of scripts within 3–5 business days. Recording usually begins in your first week, and you'll have your first professional video live shortly after." 
+    },
+    { 
+      q: "What if I've tried YouTube before and it didn't work?", 
+      a: "Most fail because they lack consistency or a backend strategy to turn views into calls. We solve the 'consistency' problem by handling the work, and the 'results' problem by applying a proven business-first strategy to every video we produce." 
+    },
   ];
 
   const services = [
@@ -173,7 +213,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-bg-base overflow-x-hidden selection:bg-white/20 selection:text-white">
+    <div className="relative min-h-screen bg-bg-base overflow-x-hidden selection:bg-blue-500/30 selection:text-white font-plus">
       <Background />
 
       {/* Navigation */}
@@ -204,7 +244,7 @@ export default function App() {
             </div>
 
             <div className="hidden md:block">
-              <button className="bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold hover:scale-105 transition-transform active:scale-95">
+              <button className="bg-white/10 text-white border border-white/10 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-all">
                 Book A Call
               </button>
             </div>
@@ -250,13 +290,23 @@ export default function App() {
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-48 pb-20 px-6">
         <div className="container mx-auto max-w-6xl text-center">
           <FadeUp>
-            <h1 className="flex flex-col gap-6 mb-10">
+            <h1 className="flex flex-col gap-4 mb-10">
               <span className="heading-hero">
                 In 30 days we turn your <br className="hidden md:block" /> YouTube channel into a
               </span>
-              <span className="heading-hero-italic underline decoration-blue-500/20 underline-offset-8">
+              <motion.span 
+                initial={{ opacity: 0, y: -40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  delay: 0.8, 
+                  ...premiumTransition,
+                  y: { type: "spring", stiffness: 50, damping: 15 } 
+                }}
+                className="heading-hero-italic bg-linear-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+              >
                 qualified sales call machine
-              </span>
+              </motion.span>
             </h1>
 
             <p className="text-white/50 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-16">
@@ -264,9 +314,9 @@ export default function App() {
             </p>
           </FadeUp>
 
-          {/* VSL Video - Now placed right after the description */}
+          {/* VSL Video */}
           <FadeUp delay={0.2} className="w-full max-w-4xl mx-auto mb-16">
-            <PremiumCard className="p-2 border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)]">
+            <PremiumCard className="p-2 border-white/20 shadow-[0_0_100px_rgba(59,130,246,0.1)]">
               <div className="aspect-video rounded-2xl overflow-hidden bg-black/60 relative">
                 <iframe 
                   className="w-full h-full relative z-10"
@@ -281,12 +331,12 @@ export default function App() {
             </PremiumCard>
           </FadeUp>
 
-          {/* Call to Action and Trust Indicators */}
+          {/* Call to Action */}
           <FadeUp delay={0.3}>
             <div className="flex flex-col items-center gap-8">
-              <button className="btn-primary flex items-center gap-3 text-lg">
+              <button className="btn-primary flex items-center gap-3 text-lg group">
                 Book A Free Strategy Call
-                <ArrowRight size={20} />
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               
               <div className="flex items-center gap-4 bg-white/5 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
@@ -316,10 +366,10 @@ export default function App() {
             {problems.map((p, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <PremiumCard 
-                  className="p-8 h-full flex flex-col hover:-translate-y-2"
-                  glowColor="rgba(239, 68, 68, 0.1)"
+                  className="p-8 h-full flex flex-col problem-card"
+                  glowColor="rgba(239, 68, 68, 0.15)"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 ring-1 ring-red-500/20">
                     <p.icon className="text-red-400" size={24} />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{p.title}</h3>
@@ -332,10 +382,10 @@ export default function App() {
       </section>
 
       {/* Solution Section */}
-      <section className="section-spacing relative px-6 bg-white/[0.01]">
+      <section className="section-spacing relative px-6">
         <div className="container mx-auto max-w-6xl">
           <FadeUp className="text-center mb-24">
-            <span className="label-small">The Solution</span>
+            <span className="label-small text-blue-400">The Solution</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">We build your authority while<br />you focus on your business.</h2>
           </FadeUp>
           
@@ -343,10 +393,10 @@ export default function App() {
             {benefits.map((b, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <PremiumCard 
-                  className="p-10 flex flex-col hover:-translate-y-2"
-                  glowColor={b.color === 'blue' ? 'rgba(59, 130, 246, 0.15)' : 'rgba(249, 115, 22, 0.15)'}
+                  className={`p-10 flex flex-col hover:-translate-y-2 transition-all duration-500 border-${b.color === 'blue' ? 'blue' : 'orange'}-500/10`}
+                  glowColor={b.color === 'blue' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(251, 191, 36, 0.2)'}
                 >
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 ${b.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : 'bg-orange-500/10 text-orange-400'}`}>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 ring-1 ring-${b.color === 'blue' ? 'blue' : 'orange'}-500/20 ${b.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : 'bg-orange-500/10 text-orange-400'}`}>
                     <b.icon size={32} />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{b.title}</h3>
@@ -362,7 +412,7 @@ export default function App() {
       <section id="services" className="section-spacing relative px-6">
         <div className="container mx-auto max-w-6xl">
           <FadeUp className="text-center mb-24">
-            <span className="label-small">Our Expertise</span>
+            <span className="label-small text-blue-400">Our Expertise</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">The Done-For-You System</h2>
           </FadeUp>
 
@@ -370,10 +420,10 @@ export default function App() {
             {services.map((s, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <PremiumCard 
-                  className="p-10 h-full flex flex-col hover:-translate-y-2"
-                  glowColor={s.color === 'blue' ? 'rgba(59, 130, 246, 0.15)' : 'rgba(249, 115, 22, 0.15)'}
+                  className="p-10 h-full flex flex-col hover:-translate-y-2 transition-all duration-500"
+                  glowColor={s.color === 'blue' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(251, 191, 36, 0.2)'}
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ${s.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : 'bg-orange-500/10 text-orange-400'}`}>
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ring-1 ring-${s.color === 'blue' ? 'blue' : 'orange'}-500/20 ${s.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : 'bg-orange-500/10 text-orange-400'}`}>
                     <s.icon size={28} />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-white">{s.title}</h3>
@@ -385,28 +435,40 @@ export default function App() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="section-spacing relative px-6 bg-white/[0.01]">
+      {/* Workflow Section */}
+      <section className="section-spacing relative px-6">
         <div className="container mx-auto max-w-6xl">
           <FadeUp className="text-center mb-24">
-            <span className="label-small">The Workflow</span>
+            <span className="label-small text-blue-400">The Workflow</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">From Idea to Inbound Clients</h2>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12 z-10">
+            {/* Desktop Connectors */}
+            <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
+              <svg className="w-full h-full text-blue-500/10" viewBox="0 0 1200 600" fill="none">
+                {/* Row 1: 1->2->3 */}
+                <path d="M280 160 H520 M680 160 H920" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
+                {/* Connection down: 3->4 */}
+                <path d="M1000 240 V320 Q1000 400 800 400 H680" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
+                {/* Row 2: 4->5->6 */}
+                <path d="M520 400 H280 M920 400 H680" stroke="currentColor" strokeWidth="2" strokeDasharray="12 12" />
+              </svg>
+            </div>
+
             {steps.map((step, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <div className={`flex flex-col items-center text-center group ${step.highlight ? 'relative' : ''}`}>
                   {step.highlight && (
-                    <div className="absolute -inset-8 bg-blue-500/5 blur-3xl rounded-full -z-10 animate-pulse" />
+                    <div className="absolute -inset-8 bg-blue-500/10 blur-3xl rounded-full -z-10 animate-pulse" />
                   )}
-                  <div className={`relative w-20 h-20 rounded-full flex items-center justify-center mb-8 transition-all duration-500 shadow-2xl ${step.highlight ? 'bg-white text-black scale-110' : 'bg-white/5 border border-white/10 text-white/40 group-hover:border-white/20'}`}>
+                  <div className={`relative w-20 h-20 rounded-full flex items-center justify-center mb-8 transition-all duration-500 shadow-2xl ${step.highlight ? 'bg-blue-600 text-white scale-110 shadow-blue-500/20 ring-4 ring-blue-500/20' : 'bg-white/5 border border-white/10 text-white/40 group-hover:border-blue-500/50 group-hover:text-blue-400'}`}>
                     <span className="text-2xl font-bold tracking-tighter">{i + 1}</span>
                   </div>
                   <h3 className={`text-xl font-bold mb-3 ${step.highlight ? 'text-white' : 'text-white/80'}`}>{step.name}</h3>
                   <p className="text-white/40 text-sm max-w-[200px]">{step.desc}</p>
                   {step.highlight && (
-                    <span className="mt-6 px-4 py-1.5 rounded-full bg-blue-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-blue-500/20">
+                    <span className="mt-6 px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-blue-500/20">
                       Your Only Task
                     </span>
                   )}
@@ -418,7 +480,7 @@ export default function App() {
       </section>
 
       {/* Comparison Section */}
-      <section className="section-spacing relative px-6">
+      <section className="section-spacing relative px-6 bg-white/[0.01]">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <FadeUp>
@@ -455,7 +517,7 @@ export default function App() {
                   </span>
                 </div>
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center ring-2 ring-blue-500/20">
                     <CheckCircle2 className="text-blue-400" size={24} />
                   </div>
                   <h3 className="text-3xl font-bold">Pre-Sold Leads</h3>
@@ -464,7 +526,7 @@ export default function App() {
                 <ul className="space-y-6">
                   {["Trust you implicitly", "Ready to pay premium", "Close on the first call", "80%+ closing rate"].map((item, i) => (
                     <li key={i} className="flex items-center gap-4 text-white/90">
-                      <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,1)]" />
+                      <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]" />
                       <span className="text-lg font-medium">{item}</span>
                     </li>
                   ))}
@@ -476,17 +538,17 @@ export default function App() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="section-spacing relative px-6 bg-white/[0.01]">
+      <section id="testimonials" className="section-spacing relative px-6">
         <div className="container mx-auto max-w-6xl">
           <FadeUp className="text-center mb-24">
-            <span className="label-small">Success Stories</span>
+            <span className="label-small text-blue-400">Success Stories</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Trusted by Industry Leaders</h2>
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <PremiumCard className="p-10 flex flex-col h-full hover:-translate-y-2">
+                <PremiumCard className="p-10 flex flex-col h-full hover:-translate-y-2 transition-all">
                   <div className="flex gap-1.5 mb-8">
                     {[1,2,3,4,5].map(s => <Zap key={s} size={14} className="text-blue-500 fill-blue-500" />)}
                   </div>
@@ -506,10 +568,10 @@ export default function App() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-spacing relative px-6">
+      <section className="section-spacing relative px-6 bg-white/[0.01]">
         <div className="container mx-auto max-w-4xl">
           <FadeUp className="text-center mb-24">
-            <span className="label-small">Common Questions</span>
+            <span className="label-small text-blue-400">Common Questions</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Everything you need to know</h2>
           </FadeUp>
 
@@ -522,8 +584,8 @@ export default function App() {
                     className="w-full px-10 py-8 flex items-center justify-between text-left hover:bg-white/[0.02] transition-colors"
                   >
                     <span className="text-xl font-bold tracking-tight">{faq.q}</span>
-                    <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-transform duration-500 ${activeFaq === i ? 'rotate-180 bg-white text-black border-white' : 'text-white/40'}`}>
-                      <ChevronDown size={18} />
+                    <div className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all duration-500 ${activeFaq === i ? 'rotate-180 bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-500/20' : 'text-white/40 group-hover:border-white/20'}`}>
+                      <ChevronDown size={20} />
                     </div>
                   </button>
                   <AnimatePresence>
@@ -548,15 +610,15 @@ export default function App() {
       </section>
 
       {/* Final CTA */}
-      <section className="section-spacing relative px-6 bg-white/[0.02]">
+      <section className="section-spacing relative px-6">
         <div className="container mx-auto max-w-5xl">
-          <PremiumCard className="p-16 md:p-24 text-center relative overflow-hidden" glowColor="rgba(59, 130, 246, 0.2)">
-            <div className="absolute top-0 right-0 p-12 -z-10 opacity-20">
-              <Zap className="text-blue-500" size={160} />
+          <PremiumCard className="p-16 md:p-24 text-center relative overflow-hidden" glowColor="rgba(59, 130, 246, 0.3)">
+            <div className="absolute top-0 right-0 p-12 -z-10 opacity-10">
+              <Zap className="text-blue-500" size={200} />
             </div>
             
             <FadeUp>
-              <h2 className="text-[40px] md:text-[80px] font-bold mb-10 leading-[0.9] tracking-tighter">Ready to turn YouTube into a <br className="hidden md:block"/> <span className="text-white/40">sales machine?</span></h2>
+              <h2 className="text-[40px] md:text-[80px] font-bold mb-10 leading-[0.9] tracking-tighter">Ready to turn YouTube into a <br className="hidden md:block"/> <span className="text-white/30">sales machine?</span></h2>
               <p className="text-white/50 text-xl md:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed">
                 Stop guessing and start scaling. We handle the entire process so you can focus on closing the inbound deals we send your way.
               </p>
@@ -565,9 +627,9 @@ export default function App() {
                   Book A Strategy Call
                   <ArrowRight size={22} />
                 </button>
-                <div className="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-full border border-white/10">
-                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                   <span className="text-sm font-bold text-white/60">3 spots left for March</span>
+                <div className="flex items-center gap-3 bg-blue-500/5 px-6 py-4 rounded-full border border-blue-500/10">
+                   <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                   <span className="text-sm font-bold text-blue-400/80 uppercase tracking-widest">3 spots left for March</span>
                 </div>
               </div>
             </FadeUp>
@@ -576,32 +638,31 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 relative z-10 px-6">
+      <footer className="py-20 border-t border-white/5 relative z-10 px-6 bg-black">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <span className="text-2xl font-bold tracking-tighter mb-4 text-white">Jasper Filmz</span>
-              <p className="text-white/40 text-sm max-w-xs leading-relaxed">
+              <p className="text-white/30 text-sm max-w-xs leading-relaxed">
                 The high-end YouTube growth agency for coaches, consultants, and world-class creators.
               </p>
             </div>
             
             <div className="flex gap-16">
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Connect</span>
-                <a href="#" className="text-sm text-white/60 hover:text-white transition-colors">YouTube</a>
-                <a href="#" className="text-sm text-white/60 hover:text-white transition-colors">Instagram</a>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">Connect</span>
+                <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">YouTube</a>
+                <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Instagram</a>
               </div>
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Legal</span>
-                <a href="#" className="text-sm text-white/60 hover:text-white transition-colors">Privacy</a>
-                <a href="#" className="text-sm text-white/60 hover:text-white transition-colors">Terms</a>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">Legal</span>
+                <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Privacy</a>
+                <a href="#" className="text-sm text-white/50 hover:text-white transition-colors">Terms</a>
               </div>
             </div>
           </div>
-          
-          <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-white/20 text-[10px] font-medium tracking-widest uppercase">┬⌐ 2026 Jasper Filmz. Crafted for excellence.</p>
+          <div className="mt-20 pt-8 border-t border-white/5 text-center">
+            <p className="text-white/10 text-[10px] uppercase tracking-[0.3em]">© 2026 Jasper Filmz. All Rights Reserved.</p>
           </div>
         </div>
       </footer>

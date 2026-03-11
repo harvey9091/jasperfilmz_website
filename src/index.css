@@ -22,7 +22,7 @@
 @layer base {
   body {
     @apply antialiased text-white/90 bg-bg-base font-plus selection:bg-blue-500/30 overflow-x-hidden;
-    background: radial-gradient(circle at 50% -20%, #151820 0%, #030303 100%);
+    background: radial-gradient(circle at 50% -20%, #0d1220 0%, #030303 100%);
   }
 }
 
@@ -63,10 +63,16 @@
     @apply relative bg-glass-bg backdrop-blur-[24px] border border-glass-border rounded-[24px] shadow-premium transition-all duration-700 ease-premium overflow-hidden;
   }
 
+  .premium-card:hover {
+    @apply -translate-y-1;
+    border-color: var(--glow-color);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--glow-color);
+  }
+
   .premium-card::before {
     content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--glow-color), transparent 50%);
   }
 
   .premium-card:hover::before {
@@ -79,7 +85,18 @@
   }
 
   .btn-primary {
-    @apply relative overflow-hidden bg-white text-black px-10 py-4 font-bold rounded-full transition-all duration-500 ease-premium hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95;
+    @apply relative overflow-hidden bg-blue-600 text-white px-10 py-4 font-bold rounded-full transition-all duration-500 ease-premium hover:scale-105 hover:bg-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] active:scale-95;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Problem card specific hover */
+  .problem-card:hover {
+    border-color: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 0 50px -10px rgba(239, 68, 68, 0.2);
+  }
+
+  .problem-card:hover .inner-glow {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, transparent 40%);
   }
 
   .btn-secondary {
@@ -130,4 +147,3 @@
 .label-small {
   @apply text-[12px] font-bold uppercase tracking-[0.2em] text-white/40 mb-4 inline-block;
 }
-
